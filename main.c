@@ -18,6 +18,7 @@ union {
 /**
  * @brief A function that parses command line argument strings for
  * hexadecimal numbers. To be updated when AES-196 and AES-256 algorithms are implemented.
+ * As for now, and since only AES-128 is impleemented, output is truncated at 16 bytes.
  * @param argv The argv array of arguments.
  * @param argIndex The index of the argument to be parsed.
  * @return A pointer to the parsed argument.
@@ -42,7 +43,8 @@ int main (int argc, char **argv)
 	uint8_t *buffer;
 	uint8_t *cipherKey;
 	if (argc < 3) {
-		printf("Usage: %s plaintext key\nBoth plaintext and key should be in hexadecimal format without prefixed 0x.\n",argv[0]);
+		printf("Usage: %s plaintext key\nBoth plaintext and key should be in hexadecimal format without prefixed 0x.\nBeware!\
+		Since only AES-128 is implemented for now, the plaintext and key would be truncated at 16 bytes.",argv[0]);
 		exit (1);
 	} else {
 		buffer = commandLineParser (argv, 1);
